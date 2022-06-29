@@ -2,6 +2,7 @@
 const bcrypt = require("bcrypt");
 const { expressjwt } = require("express-jwt");
 const jwt = require("jsonwebtoken");
+const jwtDecode = require("jwt-decode");
 
 // Internal Imports
 const User = require("../models/user");
@@ -126,18 +127,51 @@ const isAuth = (req, res, next) => {
 // isAdmin middleware
 const isAdmin = (req, res, next) => {
   try {
-    console.log(req.user);
-    if (req.user.role === 0) {
-      return res.json({
-        msg: "Admin resourse! Access denied",
-      });
-    }
+    // console.log(req.user);
+    // if (req.user.role === 0) {
+    //   return res.json({
+    //     msg: "Admin resourse! Access denied",
+    //   });
+    // }
     next();
   } catch (error) {
     return res.json({
       error,
     });
   }
+};
+
+const permission = (userRole) => {
+  return function (req, res, next) {
+    const token = req.header("Authorization");
+    const decode = jwtDecode(token);
+    const role = decode.role;
+    if (!token) {
+      return res.status(401).json({
+        message: "unauthorized user",
+      });
+    }
+    try {
+      let { role } = jwtDecode(token);
+      if (1 === role && userRole === 1) {
+        return next();
+      } else {
+        return next(
+          res.status(401).json({
+            message: "You are not an authorized user",
+          })
+        );
+      }
+    } catch (error) {
+      res.json({
+        message: "You do not have permission for this API",
+        error,
+        token,
+        decode,
+        role,
+      });
+    }
+  };
 };
 
 module.exports = {
@@ -147,4 +181,5 @@ module.exports = {
   requireSignIn,
   isAuth,
   isAdmin,
+  permission,
 };

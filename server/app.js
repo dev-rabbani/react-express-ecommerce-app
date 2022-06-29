@@ -30,10 +30,12 @@ app.use(cookieParser());
 // import routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
+const categoryRoutes = require("./routes/category");
 
 // routes middleware
 app.use("/api/v1/user", authRoutes);
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/category", categoryRoutes);
 
 //default routes
 app.get("/", (req, res) => {

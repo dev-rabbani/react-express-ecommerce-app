@@ -9,9 +9,9 @@ const {
   isAdmin,
   permission,
 } = require("../controllers/auth");
-const { userById } = require("../controllers/user");
+const { create } = require("../controllers/category");
 
 // Routes
-router.get("/secret/:id", requireSignIn, isAuth, userById);
+router.post("/create", requireSignIn, create);
 
 module.exports = router;
