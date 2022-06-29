@@ -1,0 +1,25 @@
+# dependencies
+client/node_modules
+server/node_modules
+
+# production
+/build
+/dist
+  
+# misc
+package.json.bak
+.DS_Store
+
+# config file
+client/.vscode
+server/.vscode
+
+client/.env
+server/.env
+
+# debug
+client/npm-debug.log*
+server/npm-debug.log*
+
+client/yarn-debug.log*
+server/yarn-debug.log*
