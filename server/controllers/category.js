@@ -26,6 +26,27 @@ const create = async (req, res) => {
   }
 };
 
+// list
+const list = async (req, res) => {
+  try {
+    const data = await Category.find();
+    if (!data) {
+      return res.json({
+        msg: "Category not found",
+      });
+    }
+    return res.json({
+      msg: "Category List",
+      data,
+    });
+  } catch (error) {
+    return res.json({
+      error,
+    });
+  }
+};
+
 module.exports = {
   create,
+  list,
 };

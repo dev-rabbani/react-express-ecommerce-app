@@ -9,10 +9,20 @@ const {
   isAdmin,
   permission,
 } = require("../controllers/auth");
-const { create, list } = require("../controllers/category");
+
+const {
+  create,
+  list,
+  update,
+  remove,
+  getById,
+} = require("../controllers/product");
 
 // Routes
 router.post("/create/:id", requireSignIn, isAuth, permission(1), create);
+router.put("/update/:id/:proId", requireSignIn, isAuth, permission(1), update);
+router.delete("/remove/:id/:proId", requireSignIn, isAuth, permission(1), remove);
+router.get("/:id", getById);
 router.get("/list", list);
 
 module.exports = router;
