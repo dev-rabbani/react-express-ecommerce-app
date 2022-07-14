@@ -21,7 +21,13 @@ const {
 // Routes
 router.post("/create/:id", requireSignIn, isAuth, permission(1), create);
 router.put("/update/:id/:proId", requireSignIn, isAuth, permission(1), update);
-router.delete("/remove/:id/:proId", requireSignIn, isAuth, permission(1), remove);
+router.delete(
+  "/remove/:id/:proId",
+  requireSignIn,
+  isAuth,
+  permission(1),
+  remove
+);
 router.get("/:id", getById);
 router.get("/list", list);
 
