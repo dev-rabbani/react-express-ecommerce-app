@@ -1,0 +1,59 @@
+/*================================
+// RadiusSliderElements
+=================================*/
+
+.radiusSliderWrapper {
+  position: relative;
+  .rt-slider-btn {
+    position: relative;
+    z-index: 1;
+    @include flex-position(inline-flex, center, center);
+    @include square(40px, 50%);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    background-color: transparent;
+    @include transition();
+    overflow: hidden;
+    &::after {
+      @extend .after-before;
+      background-color: var(--color-primary);
+      transform: scale(0.4);
+      visibility: hidden;
+      opacity: 0;
+      z-index: -1;
+      transition: all 0.5s ease;
+      border-radius: 50%;
+    }
+    &:hover {
+      color: var(--color-white);
+      border-color: transparent;
+      svg {
+        animation: toLeftFromRight 0.5s forwards;
+      }
+      &::after {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    &.rt-btn-next {
+      &:hover {
+        svg {
+          animation: toRightFromLeft 0.5s forwards;
+        }
+      }
+    }
+  }
+  .rt-slider-navignations {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    @include breakpoint("sm") {
+      bottom: -75px;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 // External Imports
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const { ObjectId } = Schema;
 
 // productSchema
 const productSchema = new Schema(
@@ -23,9 +22,13 @@ const productSchema = new Schema(
       required: true,
     },
     category: {
-      type: ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Category",
       required: true,
+    },
+    image: {
+      type: Schema.Types.ObjectId,
+      ref: "Image",
     },
     quantity: {
       type: Number,

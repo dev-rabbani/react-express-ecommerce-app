@@ -1,0 +1,197 @@
+/*==================================
+// radius-banner
+===================================*/
+
+.rt-banner-section {
+  position: relative;
+  z-index: 1;
+  &--style-1 {
+    position: relative;
+    z-index: 4;
+    padding: 170px 0px 100px;
+    background-color: #f0f5ff;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    @include breakpoint("md") {
+      padding: 120px 0;
+    }
+    @include breakpoint("sm") {
+      padding: 100px 0;
+    }
+  }
+  &--style-2 {
+    @include background-content();
+    padding: 240px 0 180px;
+    @media (max-width: 2000px) {
+      background-position: 0 0;
+    }
+    @include breakpoint("md") {
+      padding: 110px 0 120px;
+      background: linear-gradient(
+        180deg,
+        #e6e5e5 -0.23%,
+        #ffffff 105.23%
+      ) !important;
+    }
+  }
+  &--style-3 {
+    padding: 195px 0 135px;
+    background-color: var(--color-primary);
+    @include breakpoint("md") {
+      padding: 120px 0;
+    }
+    @include breakpoint("sm") {
+      padding: 80px 0;
+    }
+  }
+
+  .rt-banner-shape {
+    position: absolute;
+    @include breakpoint("sm") {
+      display: none;
+    }
+    &__three {
+      overflow: hidden;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      bottom: -1px;
+      svg {
+        display: block;
+        width: calc(100% + 1.3px);
+        position: relative;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: calc(139% + 1.3px);
+        height: 500px;
+        @include breakpoint("md") {
+          height: 240px;
+        }
+      }
+    }
+  }
+}
+
+.rt-banner-product-img {
+  &--style-2 {
+    img {
+      @media (min-width: 1200px) {
+        max-width: inherit;
+      }
+    }
+  }
+}
+
+/*rt-banner-content*/
+.rt-banner-content {
+  position: relative;
+  z-index: 4;
+  $self: &;
+  &__sub-title {
+    @include toRem(font-size, 18);
+    letter-spacing: 0.02rem;
+    line-height: 1;
+    font-weight: 700;
+    color: #6cc252;
+    background: #ffffff;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05);
+    border-radius: 50px;
+    min-height: 40px;
+    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  &__title {
+    @include toRem(font-size, 48);
+    font-weight: 700;
+    line-height: 1.272;
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+    @include breakpoint("sm") {
+      @include toRem(font-size, 36);
+    }
+  }
+  p {
+    @include toRem(font-size, 20);
+    line-height: 1.75;
+    color: var(--color-body);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  p + &__btn-wrap {
+    margin-top: 40px;
+  }
+  &__btn-wrap {
+    overflow: hidden;
+  }
+}
+
+.rt-inner-banner {
+  &--style-1 {
+    padding: 70px 0;
+    background-color: #f8f8f8;
+  }
+}
+
+// rt-inner-banner-content
+.rt-inner-banner-content {
+  .banner-title {
+    @include toRem(font-size, 36);
+    text-transform: capitalize;
+    margin-bottom: 14px;
+  }
+  &--center {
+    text-align: center;
+    .breadcrumb {
+      justify-content: center;
+    }
+  }
+}
+/*inner banner breadcrumb*/
+.rt-breadcrumb-wrap {
+  .breadcrumb {
+    padding: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border-radius: 0;
+    .breadcrumb-item {
+      @include toRem(font-size, 15);
+      font-weight: 500;
+      padding-left: 8px;
+      color: #888;
+      line-height: 1;
+      a {
+        font-size: inherit;
+        color: inherit;
+        text-transform: capitalize;
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+      &.active {
+        color: var(--color-secondary,#111);
+      }
+      &::before {
+        padding-right: 8px;
+        color: inherit;
+        content: "/";
+        font-size: inherit;
+        position: relative;
+        top: 1px;
+      }
+      &:first-child {
+        padding-left: 0;
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,263 @@
+/*================================
+// Footer
+=================================*/
+.footer {
+  background-color: #171717;
+  position: relative;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.footer-top {
+  padding-top: 75px;
+  padding-bottom: 75px;
+  overflow: hidden;
+}
+
+/*footer-widget*/
+.footer-widget {
+  &__logo {
+    margin-bottom: 16px;
+    margin-top: 4px;
+
+    img {
+      max-width: 170px;
+    }
+  }
+
+  &__text {
+    @include toRem(font-size, 15);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    position: relative;
+    @include toRem(font-size, 24);
+    color: var(--color-white);
+    margin-bottom: 24px;
+    text-transform: capitalize;
+  }
+}
+
+/*footer-list*/
+.footer-list {
+  $self: &;
+  display: grid;
+  gap: 16px;
+
+  &__item {
+    line-height: 1.5;
+    position: relative;
+    padding-left: 16px;
+    color: #929292;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8.5px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #929292;
+      transition: all 0.4s ease-in-out;
+    }
+
+    &:hover {
+      #{$self}__link {
+        color: var(--color-white);
+      }
+
+      &::after {
+        background-color: var(--color-primary);
+      }
+    }
+  }
+
+  &__link {
+    color: #929292;
+    @include toRem(font-size, 16);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s ease;
+  }
+
+  &--without-bullet {
+    #{$self}__item {
+      padding-left: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+/*social*/
+.social {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__link {
+    @include toRem(font-size, 15);
+    color: var(--color-white);
+    line-height: 1;
+    @include flex-position(inline-flex, center, center);
+    @include square(36px, 50%);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    transform: translateY(0);
+    background-color: var(--color-primary);
+
+    &.fb {
+      background-color: var(--color-fb);
+    }
+
+    &.tw {
+      background-color: var(--color-tw);
+    }
+
+    &.yu {
+      background-color: var(--color-yu);
+    }
+
+    &.in {
+      background-color: var(--color-in);
+    }
+
+    &.env {
+      background-color: var(--color-env);
+    }
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-white);
+      transform: translateY(-4px);
+
+      i,
+      svg {
+        animation: toBottomFromTop 0.5s forwards;
+      }
+    }
+  }
+}
+
+/*footer-top*/
+.footer-top {
+  overflow: hidden;
+}
+
+.footer-bottom {
+  padding: 36px 0;
+
+  &--style-1 {
+    border-top: 1px solid #3d3d3d;
+
+    @media (min-width: 1400px) {
+
+      .container,
+      .container-lg,
+      .container-md,
+      .container-sm,
+      .container-xl {
+        max-width: 1700px;
+      }
+    }
+  }
+}
+
+.footer-bottom-area {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 16px;
+  row-gap: 14px;
+
+  p {
+    @include toRem(font-size, 15);
+    line-height: 1.5;
+    color: #808080;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .copyright-text {
+    a {
+      color: var(--color-white);
+      font-weight: 500;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .footer-bottom-menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 4px;
+
+    li {
+      position: relative;
+      padding-right: 20px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 9px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #808080;
+        transition: all 0.4s ease-in-out;
+      }
+
+      &:last-of-type {
+        padding-right: 0;
+
+        &::after {
+          display: none;
+        }
+      }
+
+      &:hover {
+        &::after {
+          background-color: var(--color-primary);
+        }
+
+        a {
+          color: var(--color-white);
+        }
+      }
+    }
+
+    a {
+      @include toRem(font-size, 15);
+      line-height: 1.5;
+      color: #808080;
+    }
+  }
+
+  @include breakpoint("md") {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 20px;
+
+    .footer-bottom-menu {
+      justify-content: center;
+    }
+  }
+}

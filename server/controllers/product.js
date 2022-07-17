@@ -13,10 +13,10 @@ const create = async (req, res) => {
     } else {
       const productData = req.body;
       const newProduct = new Product(productData);
-      const productSave = await newProduct.save();
+      const data = await newProduct.save();
       return res.json({
         msg: "Product created suceessfully",
-        productSave,
+        data,
       });
     }
   } catch (error) {
@@ -61,7 +61,13 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
   try {
     const { proId } = req.params;
-    if (proId) {
+    const isValid = await Product.findOne({ _id: proId });
+    if (!isValid) {
+      return res.json({
+        msg: "Product Not found",
+      });
+    }
+    if (proId && isValid) {
       const deleteData = await Product.findOneAndDelete({
         _id: proId,
       });
@@ -99,7 +105,6 @@ const list = async (req, res) => {
     });
   }
 };
-// 62c32a20ded4823ac49fe282
 
 // getById
 const getById = async (req, res) => {

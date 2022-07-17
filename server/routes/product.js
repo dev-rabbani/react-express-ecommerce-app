@@ -28,7 +28,7 @@ router.delete(
   permission(1),
   remove
 );
-router.get("/:id", getById);
+router.get("/byId/:id", getById);
 router.get("/list", list);
 
 module.exports = router;

@@ -1,0 +1,136 @@
+/*subscribe*/
+
+.subscribe-section {
+  $self: &;
+
+  &--style-1 {
+    background-color: #f8f8f8;
+  }
+}
+
+.subscribe-box {
+  $self: &;
+
+  text-align: center;
+  &__title {
+    @include toRem(font-size, 30);
+    color: var(--color-black);
+    margin-bottom: 0;
+  }
+  p {
+    @include toRem(font-size, 14);
+    color: #777;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title + p {
+    margin-top: 10px;
+  }
+  p + form {
+    margin-top: 28px;
+  }
+  form + .social {
+    margin-top: 44px;
+  }
+  p + .social {
+    margin-top: 28px;
+  }
+  &__title + .social {
+    margin-top: 20px;
+  }
+  .social + form {
+    margin-top: 35px;
+  }
+}
+
+.subscribe-form {
+  .form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .form-control {
+      @include toRem(font-size, 14);
+      color: #777;
+      background-color: transparent;
+      border: 1px solid #cbcbcb;
+      border-right: 0;
+      border-radius: 3px 0px 0px 3px;
+      padding: 13px 24px;
+      &:focus {
+        border-color: var(--color-primary);
+      }
+      &::placeholder {
+        color: #777;
+        text-transform: capitalize;
+      }
+    }
+    .submit-btn {
+      @include toRem(font-size, 14);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      background-color: var(--color-black);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 30px;
+      border: none;
+      @include transition();
+      margin-left: -1px;
+      border-radius: 0px 3px 3px 0px;
+      &:focus {
+        box-shadow: none;
+        outline: 0;
+      }
+      &:hover {
+        background-color: var(--color-primary);
+      }
+    }
+
+    @include breakpoint("xs") {
+      display: grid;
+      gap: 8px;
+      .submit-btn,
+      .form-control {
+        border-radius: 3px;
+      }
+      .form-control {
+        border: 1px solid #cbcbcb;
+      }
+    }
+  }
+}
+
+.social-transparent-style {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 18px;
+  row-gap: 6px;
+
+  li {
+    &.title {
+      @include toRem(font-size, 18);
+      color: #777;
+      @include breakpoint("xs") {
+        flex: 0 0 100%;
+      }
+    }
+  }
+  a {
+    @include toRem(font-size, 18);
+    color: #575757;
+    &:hover {
+      color: var(--color-secondary,#111);
+      i,
+      svg {
+        animation: toBottomFromTop 0.5s forwards;
+      }
+    }
+  }
+}

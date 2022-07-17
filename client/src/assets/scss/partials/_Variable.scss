@@ -1,0 +1,107 @@
+$font-body: "Inter", sans-serif;
+$font-title: "Inter", sans-serif;
+$font-awesome: "Font Awesome 6 Free";
+
+$color-primary: #0066ff;
+$color-primary-hover: #0a39f3;
+$color-secondary: #111;
+$color-secondary-hover: #252525;
+
+$color-heading: #000000;
+$color-heading-hover: #252525;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-body: #666;
+$color-grey: #f8faff;
+
+$color-border: #e2e2e2;
+
+$border-none: 0;
+$border-sm: 5px;
+$border-md: 10px;
+$border-lg: 15px;
+$border-xl: 20px;
+
+$color-fb: #1877f2;
+$color-tw: #1da1f2;
+$color-in: #0077b5;
+$color-vm: #162221;
+$color-pn: #e60023;
+$color-wh: #25d366;
+$color-dr: #ea4c89;
+$color-yu: #ff0000;
+$color-github: #333;
+$color-env: #81b342;
+$color-wp-org: #009bcb;
+
+/*============================
+//    css variable
+============================*/
+:root {
+  --font-body: "Roboto", sans-serif;
+  --font-title: "Josefin Sans", sans-serif;
+  --font-awesome: "Font Awesome 6 Free";
+
+  --color-primary: #0066ff;
+  --color-primary-hover: #0a39f3;
+  --color-secondary: #111;
+  --color-secondary-hover: #252525;
+
+  --color-heading: #000000;
+  --color-heading-hover: #252525;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-body: #666;
+  --color-grey: #f8faff;
+
+  --color-border: #e2e2e2;
+
+  --border-none: 0;
+  --border-sm: 5px;
+  --border-md: 10px;
+  --border-lg: 15px;
+  --border-xl: 20px;
+
+  --color-fb: #1877f2;
+  --color-tw: #1da1f2;
+  --color-in: #0077b5;
+  --color-vm: #162221;
+  --color-pn: #e60023;
+  --color-wh: #25d366;
+  --color-dr: #ea4c89;
+  --color-yu: #ff0000;
+  --color-github: #333;
+  --color-env: #81b342;
+  --color-wp-org: #009bcb;
+
+  --opacity-100: 0.1;
+  --opacity-200: 0.2;
+  --opacity-300: 0.3;
+  --opacity-400: 0.4;
+  --opacity-500: 0.5;
+  --opacity-600: 0.6;
+  --opacity-700: 0.7;
+  --opacity-800: 0.8;
+  --opacity-900: 0.9;
+  --opacity-1000: 1;
+}
+
+// Breakpoints
+$breakpoints: (
+  "xs": (
+    max-width: 575px,
+  ),
+  "sm": (
+    max-width: 767px,
+  ),
+  "md": (
+    max-width: 991px,
+  ),
+  "lg": (
+    max-width: 1199px,
+  ),
+) !default;

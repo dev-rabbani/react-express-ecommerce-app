@@ -32,12 +32,14 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
+const uploaderRoutes = require("./routes/fileUpload");
 
 // routes middleware
 app.use("/api/v1/user", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
+app.use("/api/v1/upload", uploaderRoutes);
 
 //default routes
 app.get("/", (req, res) => {

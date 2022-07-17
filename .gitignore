@@ -23,3 +23,6 @@ server/npm-debug.log*
 
 client/yarn-debug.log*
 server/yarn-debug.log*
+
+client/yarn.lock
+server/yarn.lock
