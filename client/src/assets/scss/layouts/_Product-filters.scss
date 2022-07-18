@@ -1,47 +1,53 @@
-/*shopbuilder-product-filters-wrapper*/
-.shopbuilder-product-filters-wrapper {
+/*product-filters-wrapper*/
+.product-filters-wrapper {
   display: grid;
   gap: 40px;
 }
 
-/*shopbuilder-product-filter-single*/
-.shopbuilder-product-filter-single {
-  .shopbuilder-product-filter-title {
+/*product-filter-single*/
+.product-filter-single {
+  .product-filter-title {
     @include toRem(font-size, 20);
     color: var(--color-black);
     border-bottom: 1px solid var(--color-border);
     padding-bottom: 15px;
     margin-bottom: 0;
   }
-  .shopbuilder-product-filter-title + .shopbuilder-list {
+
+  .product-filter-title+.list {
     margin-top: 25px;
   }
-  .shopbuilder-product-filter-title + .shopbuilder-price-filter-wrap,
-  .shopbuilder-product-filter-title + .shopbuilder-size-filter-wrap,
-  .shopbuilder-product-filter-title + .shopbuilder-color-filter-wrap {
+
+  .product-filter-title+.price-filter-wrap,
+  .product-filter-title+.size-filter-wrap,
+  .product-filter-title+.color-filter-wrap {
     margin-top: 30px;
   }
 }
 
-/*shopbuilder-filter-check-group*/
-.shopbuilder-filter-check-group {
+/*filter-check-group*/
+.filter-check-group {
   display: flex;
   align-items: center;
-  > .sb-checkbox {
+
+  >.ecom-checkbox {
     display: none;
   }
-  .sb-checkbox-label {
+
+  .ecom-checkbox-label {
     display: inline-flex;
     align-items: center;
     @include toRem(font-size, 16);
     color: #2a2a2a;
     gap: 6px;
     cursor: pointer;
+
     .count {
-      color: var(--color-body,#666);
+      color: var(--color-body, #666);
     }
   }
-  .sb-checkbox + .sb-checkbox-label {
+
+  .ecom-checkbox+.ecom-checkbox-label {
     .check-mark {
       width: 18px;
       height: 18px;
@@ -53,6 +59,7 @@
       position: relative;
       z-index: 1;
       @include transition();
+
       &::after {
         content: "";
         position: absolute;
@@ -67,22 +74,25 @@
       }
     }
   }
-  .sb-checkbox:checked + .sb-checkbox-label {
+
+  .ecom-checkbox:checked+.ecom-checkbox-label {
     .check-mark {
       border-color: var(--color-primary);
+
       &::after {
         visibility: visible;
         opacity: 1;
       }
     }
+
     .text {
       color: #000;
     }
   }
 }
 
-/*shopbuilder-category-list*/
-.shopbuilder-category-list {
+/*category-list*/
+.category-list {
   display: grid;
   gap: 3px;
 
@@ -96,15 +106,19 @@
     align-items: center;
     gap: 8px;
     margin-top: 6px;
+
     i {
       @include transition();
     }
+
     &:focus {
       outline: 0;
       box-shadow: none;
     }
+
     &:hover {
-      color: var(--color-secondary,#111);
+      color: var(--color-secondary, #111);
+
       i {
         transform: rotate(360deg);
       }
@@ -112,17 +126,18 @@
   }
 }
 
-/*shopbuilder-list*/
-.shopbuilder-list {
+/*list*/
+.list {
   li {
-    > span {
+    >span {
       position: relative;
       display: block;
       padding: 2px 0;
       cursor: pointer;
     }
+
     &.list-item-has-children {
-      > span {
+      >span {
         &::after {
           content: "\f078";
           position: absolute;
@@ -135,13 +150,15 @@
           font-weight: 800;
           @include transition();
         }
+
         &.opened {
           &::after {
             content: "\f077";
           }
         }
       }
-      > .sub-list {
+
+      >.sub-list {
         display: none;
         padding: 8px 16px;
       }
@@ -149,9 +166,9 @@
   }
 }
 
-/*shopbuilder-price-filter-wrap*/
-.shopbuilder-price-filter-wrap {
-  .shopbuilder-price-filter-header {
+/*price-filter-wrap*/
+.price-filter-wrap {
+  .price-filter-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -159,18 +176,20 @@
     row-gap: 8px;
     margin-bottom: 30px;
   }
+
   .price-range-select {
     @include toRem(font-size, 16);
     color: #2a2a2a;
     font-weight: 500;
     font-family: var(--font-title);
     letter-spacing: 0.02em;
+
     .range-title {
-      color: var(--color-body,#666);
+      color: var(--color-body, #666);
     }
   }
 
-  .sb-fill-btn {
+  .ecom-fill-btn {
     color: var(--color-black);
     background: #ececec;
     border-radius: 3px;
@@ -188,6 +207,7 @@
     box-shadow: none;
     border-radius: 4px;
   }
+
   .noUi-horizontal {
     height: 4px;
   }
@@ -211,7 +231,9 @@
     box-shadow: 4px 2px #a2a2a2;
     cursor: pointer;
   }
+
   .noUi-handle {
+
     &::after,
     &::before {
       display: none;
@@ -219,19 +241,21 @@
   }
 }
 
-/*shopbuilder-color-filter-wrap*/
-.shopbuilder-color-filter-wrap {
-  .shopbuilder-filter-check-group {
+/*color-filter-wrap*/
+.color-filter-wrap {
+  .filter-check-group {
     display: flex;
     align-items: center;
-    .sb-checkbox + .sb-checkbox-label {
+
+    .ecom-checkbox+.ecom-checkbox-label {
       .color-swatch {
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        background: var(--sb-color-bg, #e7e7e7);
+        background: var(--ecom-color-bg, #e7e7e7);
         @include transition();
         position: relative;
+
         &::after {
           content: "\f00c";
           position: absolute;
@@ -249,9 +273,11 @@
         }
       }
     }
-    .sb-checkbox:checked + .sb-checkbox-label {
+
+    .ecom-checkbox:checked+.ecom-checkbox-label {
       .color-swatch {
         box-shadow: 3px 2px #000;
+
         &::after {
           visibility: visible;
           opacity: 1;
@@ -261,12 +287,13 @@
   }
 }
 
-/*shopbuilder-size-filter-wrap*/
-.shopbuilder-size-filter-wrap {
-  .shopbuilder-filter-check-group {
+/*size-filter-wrap*/
+.size-filter-wrap {
+  .filter-check-group {
     display: flex;
     align-items: center;
-    .sb-checkbox + .sb-checkbox-label {
+
+    .ecom-checkbox+.ecom-checkbox-label {
       .size-box {
         @include toRem(font-size, 15);
         width: 44px;
@@ -280,7 +307,8 @@
         justify-content: center;
       }
     }
-    .sb-checkbox:checked + .sb-checkbox-label {
+
+    .ecom-checkbox:checked+.ecom-checkbox-label {
       .size-box {
         color: var(--color-white);
         border-color: transparent;
@@ -292,13 +320,14 @@
 }
 
 /*lists*/
-.shopbuilder-color-filter-list {
+.color-filter-list {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
 }
-.shopbuilder-size-filter-list {
+
+.size-filter-list {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
