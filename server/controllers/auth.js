@@ -59,7 +59,6 @@ const signin = async (req, res) => {
         return res.json({
           msg: "Login Successfully",
           data,
-          token,
         });
       } else {
         return res.json({
@@ -144,31 +143,25 @@ const isAdmin = (req, res, next) => {
 const permission = (userRole) => {
   return function (req, res, next) {
     const token = req.header("Authorization");
-    const decode = jwtDecode(token);
-    const role = decode.role;
     if (!token) {
       return res.status(401).json({
-        message: "unauthorized user",
+        msg: "Unauthorized user",
       });
     }
     try {
-      let { role } = jwtDecode(token);
+      const { role } = jwtDecode(token);
       if (1 === role && userRole === 1) {
         return next();
       } else {
         return next(
           res.status(401).json({
-            message: "You are not an authorized user",
+            msg: "You are not an authorized user",
           })
         );
       }
     } catch (error) {
       res.json({
-        message: "You do not have permission for this API",
-        error,
-        token,
-        decode,
-        role,
+        msg: "You do not have permission for this API",
       });
     }
   };

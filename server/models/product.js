@@ -27,14 +27,13 @@ const productSchema = new Schema(
       required: true,
     },
     image: {
-      type: Schema.Types.ObjectId,
-      ref: "Image",
+      type: String,
     },
     quantity: {
       type: Number,
     },
     image: {
-      type: String,
+      type: String
     },
     isDeleted: {
       type: Boolean,

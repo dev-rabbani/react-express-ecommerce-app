@@ -18,8 +18,10 @@ const {
   getById,
 } = require("../controllers/product");
 
+const fileUploader = require("../middleware/fileUploader");
+
 // Routes
-router.post("/create/:id", requireSignIn, isAuth, permission(1), create);
+router.post("/create/:id", requireSignIn, isAuth, permission(1),fileUploader.single('image'), create);
 router.put("/update/:id/:proId", requireSignIn, isAuth, permission(1), update);
 router.delete(
   "/remove/:id/:proId",

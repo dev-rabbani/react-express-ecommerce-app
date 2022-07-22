@@ -12,11 +12,11 @@ const create = async (req, res) => {
       });
     } else {
       const categoryData = req.body;
-      const newCategory = new Category(categoryData);
-      const category = await newCategory.save();
+      const newCategory = await new Category(categoryData);
+      const data = await newCategory.save();
       return res.json({
         msg: "Category created suceessfully",
-        category,
+        data,
       });
     }
   } catch (error) {

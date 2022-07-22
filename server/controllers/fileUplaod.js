@@ -8,13 +8,8 @@ const baseUri = process.env.BASE_URI;
 const singleFileUploader = async (req, res) => {
   try {
     if (req.file) {
-      const data = await Image.create({
-        image: req.file.path,
-      });
       return res.json({
         message: "file upload successfully",
-        data,
-        fileDetails: req.file,
       });
     } else {
       return res.json({
@@ -27,6 +22,7 @@ const singleFileUploader = async (req, res) => {
     });
   }
 };
+
 
 const multipleFileUploader = (req, res) => {
   try {

@@ -6,6 +6,11 @@ const { Schema } = mongoose;
 const imageSchema = new Schema(
   {
     image: String,
+    product: {
+      type: Schema.Types.ObjectId,
+      ref: "Product",
+      required: true,
+    },
   },
   { timestamps: true }
 );

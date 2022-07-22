@@ -1,24 +1,28 @@
 // Internal Imports
 const Product = require("../models/product");
+const Image = require("../models/image");
+const baseUri = process.env.BASE_URI;
 
 // create
 const create = async (req, res) => {
   try {
-    const { name } = req.body;
-    const filterProduct = await Product.findOne({ name });
-    if (filterProduct) {
+
+    if (!req.file || !req.body) {
       return res.json({
-        msg: "Product already exist with this name",
-      });
-    } else {
-      const productData = req.body;
-      const newProduct = new Product(productData);
-      const data = await newProduct.save();
-      return res.json({
-        msg: "Product created suceessfully",
-        data,
-      });
+        msg: "No Data Found"
+      })
     }
+
+    const product = await new Product(req.body);
+    product.image = `${baseUri}/images/${req?.file?.filename}`
+    const data = await product.save()
+
+    return res.json({
+      msg: 'Product Created Successfully',
+      data
+    })
+
+
   } catch (error) {
     return res.json({
       error,
@@ -89,10 +93,11 @@ const remove = async (req, res) => {
 // list
 const list = async (req, res) => {
   try {
-    const data = await Product.find();
+    const data = await Product.find().populate('category');
     if (!data) {
       return res.json({
-        msg: "Product not found",
+        msg: "Product List",
+        data,
       });
     }
     return res.json({
