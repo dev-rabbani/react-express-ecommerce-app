@@ -3,115 +3,115 @@ import { Link } from "react-router-dom";
 
 import axios from 'axios';
 
-const Home = () => {
+const Shop = () => {
 
-  const [products, setProducts] = useState([])
-  const [categories, setCategories] = useState([])
+    const [products, setProducts] = useState([])
+    const [categories, setCategories] = useState([])
 
-  useEffect(() => {
-    const fetcher = async () => {
-      const resProductList = await axios.get('http://localhost:8000/api/v1/product/list')
-      const productData = resProductList?.data?.data
-      const resCategoryList = await axios.get('http://localhost:8000/api/v1/category/list')
-      const categoryData = resCategoryList?.data?.data
-      setProducts(productData)
-      setCategories(categoryData)
-    }
-    fetcher()
-  }, [])
+    useEffect(() => {
+        const fetcher = async () => {
+            const resProductList = await axios.get('http://localhost:8000/api/v1/product/list')
+            const productData = resProductList?.data?.data
+            const resCategoryList = await axios.get('http://localhost:8000/api/v1/category/list')
+            const categoryData = resCategoryList?.data?.data
+            setProducts(productData)
+            setCategories(categoryData)
+        }
+        fetcher()
+    }, [])
 
-  return (
-    <>
-      <div className="inner-banner inner-banner--style-1">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="inner-banner-content inner-banner-content--styl-1">
-                <h2 className="banner-title">Shop Page</h2>
-                <nav className="breadcrumb-wrap" aria-label="breadcrumb">
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <Link to="/">
-                        Home
-                      </Link>
-                    </li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      Shop
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* inner-banner */}
-
-      <div className="shop-section section-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-3 col-md-8">
-              <div className="sidebar-content ecom-sidebar-sticky">
-                <form action="#" className="filter-form">
-                  <div className="product-filters-wrapper">
-                    <div className="product-filter-single">
-                      <h3 className="product-filter-title">
-                        Categories
-                      </h3>
-                      {categories && (
-                        <ul className="filter-list category-list list">
-                          {categories.map((category) => (
-                            <li key={category?._id}>
-                              <span>
-                                <div className="filter-check-group">
-                                  <input type="checkbox" className="ecom-checkbox" id={category?._id} name={category?._id} />
-                                  <label htmlFor={category?._id} className="ecom-checkbox-label">
-                                    <span className="check-mark"></span>
-                                    <span className="list-text">{category?.name}</span>
-                                    {/* <span className="item-count">(12)</span> */}
-                                  </label>
-                                </div>
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                    {/* end product-filter-single  */}
-
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="col-lg-9">
-              {products && (
-                <div className="row gx-4 gy-5">
-                  {products.map((product) => (
-                    <div className="col-lg-4 col-sm-6" key={product?._id}>
-                      <div className="card-media card-img-top">
-                        <img src={product?.image} alt="" />
-                      </div>
-                      <div className="card">
-                        <div className="card-body">
-                          <h3 className="card-title">
-                            {product?.name}
-                          </h3>
-                          <p>
-                            {product?.category?.name}
-                          </p>
-                          <p>
-                            {product?.description}
-                          </p>
-                          <p>
-                            ${product?.price}
-                          </p>
+    return (
+        <>
+            <div className="inner-banner inner-banner--style-1">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="inner-banner-content inner-banner-content--styl-1">
+                                <h2 className="banner-title">Shop Page</h2>
+                                <nav className="breadcrumb-wrap" aria-label="breadcrumb">
+                                    <ol className="breadcrumb">
+                                        <li className="breadcrumb-item">
+                                            <Link to="/">
+                                                Home
+                                            </Link>
+                                        </li>
+                                        <li className="breadcrumb-item active" aria-current="page">
+                                            Shop
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  ))}
                 </div>
-              )}
-              {/* <div className="row gx-4 gy-5">
+            </div>
+            {/* inner-banner */}
+
+            <div className="shop-section section-padding">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-3 col-md-8">
+                            <div className="sidebar-content ecom-sidebar-sticky">
+                                <form action="#" className="filter-form">
+                                    <div className="product-filters-wrapper">
+                                        <div className="product-filter-single">
+                                            <h3 className="product-filter-title">
+                                                Categories
+                                            </h3>
+                                            {categories && (
+                                                <ul className="filter-list category-list list">
+                                                    {categories.map((category) => (
+                                                        <li key={category?._id}>
+                                                            <span>
+                                                                <div className="filter-check-group">
+                                                                    <input type="checkbox" className="ecom-checkbox" id={category?._id} name={category?._id} />
+                                                                    <label htmlFor={category?._id} className="ecom-checkbox-label">
+                                                                        <span className="check-mark"></span>
+                                                                        <span className="list-text">{category?.name}</span>
+                                                                        {/* <span className="item-count">(12)</span> */}
+                                                                    </label>
+                                                                </div>
+                                                            </span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </div>
+                                        {/* end product-filter-single  */}
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div className="col-lg-9">
+                            {products && (
+                                <div className="row gx-4 gy-5">
+                                    {products.map((product) => (
+                                        <div className="col-lg-4 col-sm-6" key={product?._id}>
+                                            <div className="card-media card-img-top">
+                                                <img src={product?.image} alt="" />
+                                            </div>
+                                            <div className="card">
+                                                <div className="card-body">
+                                                    <h3 className="card-title">
+                                                        {product?.name}
+                                                    </h3>
+                                                    <p>
+                                                        {product?.category?.name}
+                                                    </p>
+                                                    <p>
+                                                        {product?.description}
+                                                    </p>
+                                                    <p>
+                                                        ${product?.price}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                            {/* <div className="row gx-4 gy-5">
                 <div className="col-xl-4 col-sm-6">
                   <div className="ecom-product ecom-product-grid ecom-product-grid-style-1 ecom-double-img">
                     <div className="ecom-product-img">
@@ -193,13 +193,13 @@ const Home = () => {
                   </div>
                 </div> 
               </div>*/}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-    </>
-  );
+        </>
+    );
 };
 
-export default Home;
+export default Shop;

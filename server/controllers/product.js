@@ -35,6 +35,12 @@ const update = async (req, res) => {
   try {
     const { proId } = req.params;
 
+    if (!req.file || !req.body) {
+      return res.json({
+        msg: "No updated Data Found"
+      })
+    }
+
     await Product.findOneAndUpdate(
       { _id: proId },
       {
@@ -46,12 +52,8 @@ const update = async (req, res) => {
     );
 
     const data = req.body;
+    // data.image = `${baseUri}/images/${req?.file?.filename}`
 
-    if (!data) {
-      return res.json({
-        message: "No updated Data Found",
-      });
-    }
     return res.json({
       message: "Product info updated successfully",
       data,

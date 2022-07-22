@@ -68,7 +68,7 @@ const imageUpload = async (req, res) => {
     );
 
     req.body.image = pathName;
-    const img = new Image(req.body);
+    const img = await new Image(req.body);
     const result = await img.save();
 
     if (result) {

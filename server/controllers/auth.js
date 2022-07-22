@@ -19,11 +19,11 @@ const signup = async (req, res) => {
       });
     } else {
       const userData = req.body;
-      const newUser = new User(userData);
-      const user = await newUser.save();
+      const newUser = await new User(userData);
+      const data = await newUser.save();
       return res.json({
         msg: "User created suceessfully",
-        user,
+        data,
       });
     }
   } catch (error) {
@@ -51,7 +51,8 @@ const signin = async (req, res) => {
         mobileNo,
       };
 
-      const token = jwt.sign(data, SECRET_kEY, { expiresIn: "5d" });
+      // TODO: 30d for development purpose
+      const token = jwt.sign(data, SECRET_kEY, { expiresIn: "30d" });
 
       res.cookie("t", token);
 
@@ -59,6 +60,10 @@ const signin = async (req, res) => {
         return res.json({
           msg: "Login Successfully",
           data,
+
+          // TODO: dev purpose
+          token
+
         });
       } else {
         return res.json({
