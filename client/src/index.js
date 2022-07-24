@@ -9,11 +9,25 @@ import "./assets/dependency/font-awesome-v6/css/all.css";
 //import app scss
 import "./assets/scss/main.scss";
 
+import { products } from './data/product'
+
+
+import Provider from "./contexts/ProdcutContext";
+import ThemeProvider from "./contexts/ThemeContext";
+
+const themeData = {
+  theme: 'dark'
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider value={products}>
+    <ThemeProvider value={themeData} >
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ThemeProvider>
+  </Provider >
 );
 
 // If you want to start measuring performance in your app, pass a function

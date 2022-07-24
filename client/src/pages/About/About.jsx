@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 
 const About = () => {
-
   return (
     <>
       <div className="inner-banner inner-banner--style-1">
